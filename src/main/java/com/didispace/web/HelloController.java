@@ -3,6 +3,8 @@ package com.didispace.web;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import org.json.JSONObject;
+
 @RestController
 public class HelloController {
 
@@ -10,21 +12,22 @@ public class HelloController {
     public String index() {
         return "Hello World";
     }
- 
-@ResponseBody
-@RequestMapping(value = "/moblie", method = RequestMethod.POST, produces = "application/json;charset=UTF-8")
-public String writeByBody(@RequestBody JSONObject jsonParam) {
-    // 直接将json信息打印出来
-    System.out.println(jsonParam.toJSONString());
+    /**
+     * 2、通过HttpServletRequest接收
+      * @param request
+     * @return
+     */
+    @RequestMapping("/addUser2")
+    public String addUser2(HttpServletRequest request) {
+        String username=request.getParameter("username");
+        String password=request.getParameter("password");
+        System.out.println("username is:"+username);
+        System.out.println("password is:"+password);
 
-    // 将获取的json数据封装一层，然后在给返回
-    JSONObject result = new JSONObject();
-    result.put("msg", "ok");
-    result.put("method", "@ResponseBody");
-    result.put("data", jsonParam);
-
-    return result.toJSONString();
-}
-
+        JSONObject result = new JSONObject();  
+        result.put("username", username);  
+        result.put("password", password);  
+        return result;
+    }
 
 }
