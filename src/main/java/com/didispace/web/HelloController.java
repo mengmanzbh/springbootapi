@@ -28,7 +28,7 @@ public class HelloController {
         // JSONObject result = new JSONObject();  
         // result.put("username", username);  
         // result.put("password", password);  
-        // return result;
+        return username;
     }
 
 }
