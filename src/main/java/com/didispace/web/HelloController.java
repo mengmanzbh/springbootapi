@@ -25,10 +25,10 @@ public class HelloController {
         System.out.println("username is:"+username);
         System.out.println("password is:"+password);
 
-        JSONObject result = new JSONObject();  
-        result.put("username", username);  
-        result.put("password", password);  
-        return result;
+        // JSONObject result = new JSONObject();  
+        // result.put("username", username);  
+        // result.put("password", password);  
+        // return result;
     }
 
 }
